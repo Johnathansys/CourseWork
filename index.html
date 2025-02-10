@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            background-color: #C8DEE5;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            color: #33539E;
+        }
+        .container {
+            background-color: antiquewhite;
+            padding: 20px;
+            margin: 50px auto;
+            width: 50%;
+            border-style: groove;
+            border-color: brown;
+            border-radius: 10px;
+        }
+        h1 {
+            font-size: 40px;
+            color: #FF7B89;
+        }
+        label {
+            font-size: 18px;
+            color: #5D576B;
+            display: block;
+            margin-top: 10px;
+        }
+        input {
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #C0B9DB;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        #output {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        button {
+            background-color: #FF7B89;
+            color: #FFEBFF;
+            border: none;
+            padding: 10px 50px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div style="position: absolute; top: 10px; left: 20px; font-size: 20px; font-weight: bold; color: #8A5082;">
+        WebApp <span style="font-size: 16px; font-weight: normal;">by JongLi™</span>
+    </div>
+
+    <div class="container">
+        <h1>Register</h1>
+        <label>Create a Username:</label>
+        <input type="text" id="username">
+        
+        <label>Email:</label>
+        <input type="text" id="input">
+        
+        <div id="output" style="color: #FF7B89;">Please enter your email address.</div>
+        
+        <button onclick="validate()">Done</button>
+    </div>
+</body>
+
+    
+    <script>
+        function validate() {
+            let email = document.getElementById('input').value;
+            let output = document.getElementById('output');
+
+            if (email.length == 0) {
+                output.innerHTML = 'This field cannot be blank.';
+                output.style.color = '#FF7B89';
+            } else if (email.indexOf('@') < email.lastIndexOf('.')) {
+                output.innerHTML = '<div><span style="color: #8A5082;"> Email submitted. </span></div>' +
+                                  '<div><span style="color: black;"> Welcome! </span></div>';
+                    setTimeout(() => {
+            window.location.href = "homepage.html";
+        }, 1500);
+    } else {
+        output.innerHTML = '<span style="color: #D72638;">*Invalid email.</span>';
+    }
+}
+    </script>
+</body>
+</html>
