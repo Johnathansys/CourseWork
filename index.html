@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>Mental Health Check-In</title>
     <style>
         body {
             background-color: #C8DEE5;
@@ -20,77 +19,83 @@
             border-color: brown;
             border-radius: 10px;
         }
-        h1 {
-            font-size: 40px;
+        .title {
+            font-size: 50px;
             color: #FF7B89;
         }
-        label {
-            font-size: 18px;
-            color: #5D576B;
-            display: block;
-            margin-top: 10px;
+        .options {
+            margin-top: 20px;
         }
-        input {
-            padding: 10px;
-            width: 80%;
-            border: 1px solid #C0B9DB;
+        .options button {
+            background-color: #EAD1EF;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 18px;
             border-radius: 5px;
-            margin-top: 5px;
+            cursor: pointer;
+            color: #33539E;
         }
-        #output {
-            margin-top: 10px;
-            font-size: 18px;
+        .options button:hover {
+            background-color: #C0B9DB;
         }
-        button {
+        .branding {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #8A5082;
+        }
+        .signup-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
             background-color: #FF7B89;
-            color: #FFEBFF;
+            color: white;
             border: none;
-            padding: 10px 50px;
+            padding: 8px 20px;
+            font-size: 16px;
             border-radius: 10px;
             cursor: pointer;
-            font-size: 18px;
-            margin-top: 15px;
+        }
+        .signup-btn:hover {
+            background-color: #E26877;
         }
     </style>
 </head>
 <body>
-    <div style="position: absolute; top: 10px; left: 20px; font-size: 20px; font-weight: bold; color: #8A5082;">
+    <div class="branding">
         WebApp <span style="font-size: 16px; font-weight: normal;">by JongLi™</span>
     </div>
+    
+    <button class="signup-btn" onclick="window.location.href='signup.html'">Sign Up</button>
 
     <div class="container">
-        <h1>Register</h1>
-        <label>Create a Username:</label>
-        <input type="text" id="username">
-        
-        <label>Email:</label>
-        <input type="text" id="input">
-        
-        <div id="output" style="color: #FF7B89;">Please enter your email address.</div>
-        
-        <button onclick="validate()">Done</button>
+        <h1 class="title">How are you feeling today?</h1>
+        <div class="options">
+            <button onclick="selectMood('Happy')">😊 Happy</button>
+            <button onclick="selectMood('Sad')">😢 Sad</button>
+            <button onclick="selectMood('Anxious')">😰 Anxious</button>
+            <button onclick="selectMood('Stressed')">😖 Stressed</button>
+            <button onclick="selectMood('Calm')">😌 Calm</button>
+        </div>
+        <p id="response" style="margin-top: 20px; font-size: 20px; color: #C0B9DB;">   </p>
     </div>
-</body>
-
     
     <script>
-        function validate() {
-            let email = document.getElementById('input').value;
-            let output = document.getElementById('output');
-
-            if (email.length == 0) {
-                output.innerHTML = 'This field cannot be blank.';
-                output.style.color = '#FF7B89';
-            } else if (email.indexOf('@') < email.lastIndexOf('.')) {
-                output.innerHTML = '<div><span style="color: #8A5082;"> Email submitted. </span></div>' +
-                                  '<div><span style="color: black;"> Welcome! </span></div>';
-                    setTimeout(() => {
-            window.location.href = "homepage.html";
-        }, 1500);
-    } else {
-        output.innerHTML = '<span style="color: #D72638;">*Invalid email.</span>';
-    }
-}
+        function selectMood(mood) {
+            document.getElementById('response').innerHTML = "You selected: <strong>" + mood + "</strong>. Thank you for sharing.";
+        }
     </script>
 </body>
 </html>
+
+
+<!-- 
+So, further I will need to add these features:
+    saving data
+    after login/reg to be redirected into homepage
+    make the color button darker when it's pressed - easier to see
+    animations
+-->
+    
